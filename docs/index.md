@@ -1,6 +1,6 @@
-# Documentación del Proyecto Intermodular
+# 📚 Documentación del Proyecto Intermodular
 
-## Índice
+## 📜 Índice
 
 - [Introducción](introducción.md)
 - [Instalación](instalacion.md)
