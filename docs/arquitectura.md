@@ -18,7 +18,7 @@ Por ejemplo, un dominio es elpais.com esto es para optimizar el listado de comen
 
 Contiene las páginas web comentadas. Cada página apunta a su dominio (**origin_id**) y tiene la URL completa.
 
-La URL es, por ejemplo, [https://elpais.com/noticia1](https://dbdiagram.io/d/FTF-692446bb228c5bbc1a3b0649) cada registro está asociado a una.
+La URL es, por ejemplo, https://elpais.com/noticia1 cada registro está asociado a una.
 
 ## comments
 
