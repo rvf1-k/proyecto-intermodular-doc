@@ -4,49 +4,49 @@ Esta es la primera versión de BD (Base de datos) para **Fortum The Forums**, se
 
 ## 🗃️ Tablas de la base de datos
 
-La BD se encuentra en el siguiente enlace: https://dbdiagram.io/d/FTF-692446bb228c5bbc1a3b0649
+La BD se encuentra en el siguiente enlace: [https://dbdiagram.io/d/FTF-692446bb228c5bbc1a3b0649](https://dbdiagram.io/d/FTF-692446bb228c5bbc1a3b0649)
 
 ![Base de datos](img/arquitectura.png)
 
 ## origins
 
-Registra los dominios de las páginas (hostnames). Cada dominio se guarda una sola vez, con un identificador y fecha de registro.
+Registra los dominios de las páginas (*hostnames*). Cada dominio se guarda una sola vez, con un identificador y fecha de registro.
 
 Por ejemplo, un dominio es elpais.com esto es para optimizar el listado de comentarios al entrar en una web, ya que se listarán todos los comentarios de su dominio.
 
 ## pages
 
-Contiene las páginas web comentadas. Cada página apunta a su dominio (origin_id) y tiene la URL completa.
+Contiene las páginas web comentadas. Cada página apunta a su dominio (**origin_id**) y tiene la URL completa.
 
-La URL es, por ejemplo, https://elpais.com/noticia1 cada registro está asociado a una.
+La URL es, por ejemplo, [https://elpais.com/noticia1](https://dbdiagram.io/d/FTF-692446bb228c5bbc1a3b0649) cada registro está asociado a una.
 
 ## comments
 
-Guarda los comentarios hechos por los usuarios sobre fragmentos de texto o imágenes. Cada comentario tiene un identificador, referencia al usuario, página y origen, el contenido del comentario, el texto seleccionado, contexto (prefijo y sufijo), hash del texto, fechas de creación y actualización, y un indicador de oculto.
+Guarda los comentarios hechos por los usuarios sobre fragmentos de texto o imágenes. Cada comentario tiene un **identificador**, referencia al **usuario**, **página** y **origen**, el **contenido** del comentario, el texto **seleccionado**, contexto (**prefijo** y **sufijo**), **hash** del texto, **fechas** de creación y actualización, y un indicador de **oculto**.
 
-- El contexto sirve para que, si el contenido de la página cambia ligeramente, con prefix y suffix, se pueda intentar buscar el fragmento de nuevo comparando el anterior y posterior del texto seleccionado.
+- El **contexto** sirve para que, si el contenido de la página cambia ligeramente, con **prefix** y **suffix**, se pueda intentar buscar el fragmento de nuevo comparando el anterior y posterior del texto seleccionado.
 
-- El hash, por ejemplo, SHA-256 que se genera del texto seleccionado, sirve para comprobar si ese texto ya fue comentado y no generar duplicados.
+- El **hash**, por ejemplo, SHA-256 que se genera del texto seleccionado, sirve para comprobar si ese texto ya fue comentado y no generar duplicados.
 
-- El indicador de oculto forma parte de acciones de administrador. No es visible el comentario, pero sigue existiendo en la base de datos.
+- El indicador de **oculto** forma parte de acciones de administrador. No es visible el comentario, pero sigue existiendo en la base de datos.
 
 ## comment_anchors
 
 Define la posición exacta del fragmento comentado. Cada anchor pertenece a un comentario (1:1) e indica si es texto o imagen, el selector CSS, la ruta XPath, offsets de inicio y fin para texto, hash de la imagen y fecha de creación.
 
-- anchor_type indica si se aplica sobre un texto o una imagen.
-- css_selector es el selector CSS del elemento que contiene el fragmento.
-- xpath alternativa a CSS selector, para reanclar.
-- start_offset y end_offset dan las posiciones de inicio y fin dentro del texto seleccionado. Solo se aplcia si el anchor es de tipo texto.
-- image_hash es el hash de la imagen si el anchor corresponde a una imagen
+- **anchor_type** indica si se aplica sobre un texto o una imagen.
+- **css_selector** es el selector CSS del elemento que contiene el fragmento.
+- **xpath** alternativa a CSS selector, para reanclar.
+- **start_offset** y **end_offset** dan las posiciones de inicio y fin dentro del texto seleccionado. Solo se aplica si el anchor es de tipo texto.
+- **image_hash** es el hash de la imagen si el anchor corresponde a una imagen
 
-  Cuando se comenta un fragmento de texto o una imagen, se crea un registro en comment_anchors. Se guarda el CSS selector o XPath del elemento contenedor, junto con los offsets de inicio y fin (si es texto claro).
+  Cuando se comenta un fragmento de texto o una imagen, se crea un registro en **comment_anchors**. Se guarda el CSS selector o XPath del elemento contenedor, junto con los offsets de inicio y fin (si es texto claro).
 
 Si la página cambia, se puede usar prefix/suffix y los selectores para tratar de reanclar el comentario en la posición correcta.
 
 ## 🔗Referencias
 
-Para el diseño de la base de datos, he tomado como referencia proyectos que realizan este tipo de selecciones, como es hypothesis analizando el json que genera a la hora de seleccionar un texto, añadir una anotación y mandarlo a su base de datos.
+Para el diseño de la base de datos, he tomado como referencia proyectos que realizan este tipo de selecciones, como es [hypothesis](https://web.hypothes.is/) analizando el json que genera a la hora de seleccionar un texto, añadir una anotación y mandarlo a su base de datos.
 
 He comentado las claves que hacen referencia a las columnas de mi base de datos, como tabla.columna:
 
