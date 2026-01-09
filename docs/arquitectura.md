@@ -44,7 +44,7 @@ Define la posición exacta del fragmento comentado. Cada anchor pertenece a un c
 
 Si la página cambia, se puede usar prefix/suffix y los selectores para tratar de reanclar el comentario en la posición correcta.
 
-## Referencias
+## 🔗Referencias
 
 Para el diseño de la base de datos, he tomado como referencia proyectos que realizan este tipo de selecciones, como es hypothesis analizando el json que genera a la hora de seleccionar un texto, añadir una anotación y mandarlo a su base de datos.
 

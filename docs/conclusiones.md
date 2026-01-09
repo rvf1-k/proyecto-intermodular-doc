@@ -1,16 +1,16 @@
 # Conclusiones
 
-## Dificultades
+## 🎢 Dificultades
 
 - Coordinación del equipo
 - Gestión de la base de datos
 
-## Aprendizajes
+## 🎓 Aprendizajes
 
 - Uso de Git en equipo
 - Documentación técnica en Markdown
 
-## Posibles mejoras
+## 📈 Posibles mejoras
 
 - Implementar autenticación avanzada
 - Desplegar en la nube
